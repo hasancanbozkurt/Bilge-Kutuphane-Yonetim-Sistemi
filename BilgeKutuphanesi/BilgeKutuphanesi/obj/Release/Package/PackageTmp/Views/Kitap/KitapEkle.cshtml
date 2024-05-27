@@ -1,0 +1,86 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLKitap
+@{
+    ViewBag.Title = "KitapEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<title>Kitap Ekle - Admin Paneli</title>
+<div class="container">
+    @if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+</div>
+@using (Html.BeginForm("KitapEkle", "Kitap", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(k => k.AD, new { @class = "form-control", maxlength = "50" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Kategori</label>
+        @Html.DropDownListFor(k => k.TBLKategori.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Yazar</label>
+        @Html.DropDownListFor(k => k.TBLYazar.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Basım Yılı</label>
+        @Html.TextBoxFor(k => k.BASIMYIL, new { @class = "form-control", maxlength = "4" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yayınevi</label>
+        @Html.TextBoxFor(k => k.YAYINEVI, new { @class = "form-control", maxlength = "50" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Sayfa Sayısı</label>
+        @Html.TextBoxFor(k => k.SAYFA, new { @class = "form-control", maxlength = "5" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yeni Kitap Resmini Yükle</label>
+        <input type="file" name="KitapResim" id="newImage" onchange="return validateFileAndButton()" />
+    </div>
+    <div style="margin-top:15px">
+        <button id="kitapEkleButton" class="btn btn-info" disabled>Kitap Ekle</button>
+        <span id="fileWarning" style="color: red; display: none;">Lütfen bir kitap resmi yükleyin.</span>
+    </div>
+    <input type="hidden" name="Durum" value="True" />
+}
+
+<script>
+    function validateFileAndButton() {
+        var fileInput = document.getElementById('newImage');
+        var file = fileInput.files[0];
+        var kitapEkleButton = document.getElementById('kitapEkleButton');
+        var fileWarning = document.getElementById('fileWarning');
+
+        if (file) {
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Lütfen bir JPG, JPEG veya PNG dosyası yükleyin.');
+                fileInput.value = '';
+                kitapEkleButton.disabled = true;
+                fileWarning.style.display = 'block';
+                return false;
+            }
+            if (file.size > 1242880) {
+                alert("Dosya boyutu 1 MB'dan küçük olmalıdır.");
+                fileInput.value = '';
+                kitapEkleButton.disabled = true;
+                fileWarning.style.display = 'block';
+                return false;
+            }
+            kitapEkleButton.disabled = false;
+            fileWarning.style.display = 'none';
+            return true;
+        } else {
+            kitapEkleButton.disabled = true;
+            fileWarning.style.display = 'block';
+            return false;
+        }
+    }
+</script>

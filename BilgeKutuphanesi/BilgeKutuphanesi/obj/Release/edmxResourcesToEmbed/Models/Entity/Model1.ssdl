@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBKutuphaneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBLAdmin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kullanici" Type="varchar" MaxLength="30" />
+    <Property Name="Sifre" Type="varchar" MaxLength="20" />
+    <Property Name="Yetki" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="TBLCezalar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UYE" Type="int" />
+    <Property Name="KITAPTAKIP" Type="int" />
+    <Property Name="BASLANGIC" Type="smalldatetime" />
+    <Property Name="BITIS" Type="smalldatetime" />
+    <Property Name="PARA" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TBLDuyurular">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORI" Type="varchar" MaxLength="50" />
+    <Property Name="ICERIK" Type="varchar" MaxLength="250" />
+    <Property Name="TARIH" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBLHakkimizda">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACIKLAMA" Type="varchar(max)" />
+    <Property Name="SLOGAN" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TBLiletisim">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="50" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="KONU" Type="varchar" MaxLength="50" />
+    <Property Name="MESAJ" Type="varchar" MaxLength="5000" />
+  </EntityType>
+  <EntityType Name="TBLKasa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AY" Type="varchar" MaxLength="20" />
+    <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TBLKategori">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="20" />
+    <Property Name="DURUM" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBLKitap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="50" />
+    <Property Name="KATEGORI" Type="tinyint" />
+    <Property Name="YAZAR" Type="int" />
+    <Property Name="BASIMYIL" Type="char" MaxLength="4" />
+    <Property Name="YAYINEVI" Type="varchar" MaxLength="50" />
+    <Property Name="SAYFA" Type="varchar" MaxLength="5" />
+    <Property Name="DURUM" Type="bit" />
+    <Property Name="KITAPRESIM" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="TBLKitapTakip">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KITAP" Type="int" />
+    <Property Name="UYE" Type="int" />
+    <Property Name="PERSONEL" Type="tinyint" />
+    <Property Name="ALISTARIHI" Type="smalldatetime" />
+    <Property Name="IADETARIHI" Type="smalldatetime" />
+    <Property Name="UYEGETIRTARIH" Type="smalldatetime" />
+    <Property Name="ISLEMDURUM" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBLMesajlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GONDEREN" Type="varchar" MaxLength="50" />
+    <Property Name="ALICI" Type="varchar" MaxLength="50" />
+    <Property Name="KONU" Type="varchar" MaxLength="50" />
+    <Property Name="ICERIK" Type="varchar" MaxLength="50" />
+    <Property Name="TARIH" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="TBLPersonel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSONEL" Type="varchar" MaxLength="50" />
+    <Property Name="DURUM" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBLUyeler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="30" />
+    <Property Name="SOYAD" Type="varchar" MaxLength="30" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="KULLANICIADI" Type="varchar" MaxLength="30" />
+    <Property Name="SIFRE" Type="varchar" MaxLength="20" />
+    <Property Name="FOTOGRAF" Type="varchar" MaxLength="250" />
+    <Property Name="TELEFON" Type="varchar" MaxLength="20" />
+    <Property Name="OKUL" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TBLYazar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="30" />
+    <Property Name="SOYAD" Type="varchar" MaxLength="30" />
+    <Property Name="DETAY" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <Association Name="FK_Cezalar_KitapTakip">
+    <End Role="TBLKitapTakip" Type="Self.TBLKitapTakip" Multiplicity="0..1" />
+    <End Role="TBLCezalar" Type="Self.TBLCezalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLKitapTakip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLCezalar">
+        <PropertyRef Name="KITAPTAKIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cezalar_Uyeler">
+    <End Role="TBLUyeler" Type="Self.TBLUyeler" Multiplicity="0..1" />
+    <End Role="TBLCezalar" Type="Self.TBLCezalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLUyeler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLCezalar">
+        <PropertyRef Name="UYE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitap_Kategori">
+    <End Role="TBLKategori" Type="Self.TBLKategori" Multiplicity="0..1" />
+    <End Role="TBLKitap" Type="Self.TBLKitap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLKategori">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKitap">
+        <PropertyRef Name="KATEGORI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitap_Yazar">
+    <End Role="TBLYazar" Type="Self.TBLYazar" Multiplicity="0..1" />
+    <End Role="TBLKitap" Type="Self.TBLKitap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLYazar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKitap">
+        <PropertyRef Name="YAZAR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KitapTakip_Kitap">
+    <End Role="TBLKitap" Type="Self.TBLKitap" Multiplicity="0..1" />
+    <End Role="TBLKitapTakip" Type="Self.TBLKitapTakip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLKitap">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKitapTakip">
+        <PropertyRef Name="KITAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KitapTakip_Uyeler">
+    <End Role="TBLUyeler" Type="Self.TBLUyeler" Multiplicity="0..1" />
+    <End Role="TBLKitapTakip" Type="Self.TBLKitapTakip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLUyeler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKitapTakip">
+        <PropertyRef Name="UYE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLKitapTakip_TBLPersonel">
+    <End Role="TBLPersonel" Type="Self.TBLPersonel" Multiplicity="0..1" />
+    <End Role="TBLKitapTakip" Type="Self.TBLKitapTakip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLPersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKitapTakip">
+        <PropertyRef Name="PERSONEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="EnFazlaKitapYazar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DBKutuphaneModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLCezalar" EntityType="Self.TBLCezalar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLDuyurular" EntityType="Self.TBLDuyurular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLHakkimizda" EntityType="Self.TBLHakkimizda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLiletisim" EntityType="Self.TBLiletisim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLKasa" EntityType="Self.TBLKasa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLKategori" EntityType="Self.TBLKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLKitap" EntityType="Self.TBLKitap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLKitapTakip" EntityType="Self.TBLKitapTakip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLMesajlar" EntityType="Self.TBLMesajlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLPersonel" EntityType="Self.TBLPersonel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLUyeler" EntityType="Self.TBLUyeler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLYazar" EntityType="Self.TBLYazar" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cezalar_KitapTakip" Association="Self.FK_Cezalar_KitapTakip">
+      <End Role="TBLKitapTakip" EntitySet="TBLKitapTakip" />
+      <End Role="TBLCezalar" EntitySet="TBLCezalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cezalar_Uyeler" Association="Self.FK_Cezalar_Uyeler">
+      <End Role="TBLUyeler" EntitySet="TBLUyeler" />
+      <End Role="TBLCezalar" EntitySet="TBLCezalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitap_Kategori" Association="Self.FK_Kitap_Kategori">
+      <End Role="TBLKategori" EntitySet="TBLKategori" />
+      <End Role="TBLKitap" EntitySet="TBLKitap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitap_Yazar" Association="Self.FK_Kitap_Yazar">
+      <End Role="TBLYazar" EntitySet="TBLYazar" />
+      <End Role="TBLKitap" EntitySet="TBLKitap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KitapTakip_Kitap" Association="Self.FK_KitapTakip_Kitap">
+      <End Role="TBLKitap" EntitySet="TBLKitap" />
+      <End Role="TBLKitapTakip" EntitySet="TBLKitapTakip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KitapTakip_Uyeler" Association="Self.FK_KitapTakip_Uyeler">
+      <End Role="TBLUyeler" EntitySet="TBLUyeler" />
+      <End Role="TBLKitapTakip" EntitySet="TBLKitapTakip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLKitapTakip_TBLPersonel" Association="Self.FK_TBLKitapTakip_TBLPersonel">
+      <End Role="TBLPersonel" EntitySet="TBLPersonel" />
+      <End Role="TBLKitapTakip" EntitySet="TBLKitapTakip" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

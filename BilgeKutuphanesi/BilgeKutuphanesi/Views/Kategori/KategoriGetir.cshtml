@@ -1,0 +1,22 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLKategori
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<title>Kategori Güncelle - Admin Paneli</title>
+
+@using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>ID</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        <label>KATEGORİ ADI</label>
+        @Html.TextBoxFor(k => k.AD, new { @class = "form-control", maxlength = "20" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

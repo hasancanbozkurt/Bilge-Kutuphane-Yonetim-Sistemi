@@ -1,0 +1,127 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLUyeler
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bilge Kütüphanesine Kayıt Ol</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link href="~/webregister/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="~/webregister/css/font-awesome.css"> 
+</head>
+<body>
+    <section class="register">
+        <div class="register-full">
+            <div class="register-left">
+                <div class="register">
+                    <div class="logo">
+                        <a href="/Vitrin/Index/"><span class="fa fa-book" aria-hidden="true"></span></a>
+                    </div>
+                    <h1>BİLGE KÜTÜPHANESİ KAYIT SAYFASI</h1>
+                    <p>
+                        Kütüphanemize hoş geldiniz. Kayıt olmak için lütfen sağ taraftaki paneldeki bilgileri eksiksiz doldurun ve kaydınızı tamamlayın.
+                    </p>
+                    <div class="content3">
+                        <ul>
+                            <li><a class="" href="/Login/GirisYap/"> Giriş Yap</a></li>
+                            <li><a class="read" href="/Vitrin/Index/"> Siteye Dön</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="register-right">
+                <div class="register-in">
+                    <h2><span class="fa fa-pencil"></span>KAYIT FORMU</h2>
+                    <div class="register-form">
+                        <form action="#" method="post" onsubmit="showMessage(event)">
+                        @*<form action="#" method="post"*@>
+                            <div class="fields-grid">
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" name="AD" required="" maxlength="30">
+                                    <label>Adınız</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" name="SOYAD" required="" maxlength="30">
+                                    <label>Soyadınız</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="email" name="MAIL" required="" maxlength="50">
+                                    <label>E-Posta</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="text" name="KULLANICIADI" required="" maxlength="30">
+                                    <label>Kullanıcı Adı</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="password" name="SIFRE" required="" maxlength="20">
+                                    <label>Şifre</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="text" name="TELEFON" required="" maxlength="20">
+                                    <label>Telefon</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input agile-styled-input-top">
+                                    <select id="category2" name="OKUL" required="">
+                                        <option value="">Okulunuzu Seçiniz*</option>
+                                        <option value="Topkapı Üniversitesi">Topkapı Üniversitesi</option>
+                                        <option value="Namık Kemal Üniversitesi">Namık Kemal Üniversitesi</option>
+                                        <option value="Akdeniz Üniversitesi">Akdeniz Üniversitesi</option>
+                                        <option value="Atatürk Üniversitesi">Atatürk Üniversitesi</option>
+                                        <option value="Uludağ Üniversitesi">Uludağ Üniversitesi</option>
+                                        <option value="Anadolu Üniversitesi">Anadolu Üniversitesi</option>
+                                    </select>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <input type="submit" value="Kayıt Ol">
+                            <div id="message" style="display: none; color: #aaff31; margin-top: 10px; ">
+                Kayıt işlemi başarıyla tamamlandı!
+            </div>
+            <script>
+                function showMessage(event) {
+                    event.preventDefault();
+                    document.getElementById('message').style.display = 'block';
+                }
+
+                document.querySelector('.register-form form').addEventListener('submit', function (event) {
+                    event.preventDefault(); // Normal form gönderimini durdur
+                    var formData = new FormData(this);
+
+                    fetch(this.action, {
+                        method: 'post',
+                        body: formData
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('message').style.display = 'block';
+                            // Başka işlemler, örneğin formu temizleme
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+
+            </script>
+                        </form>
+                    </div>
+                </div>
+                <div class="clear"> </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+        <p class="agile-copyright">© 2024 Tüm hakları saklıdır | Tasarım ve Kodlama by <a href="https://hasancanbozkurt.com.tr/">Hasan Can BOZKURT</a></a></p>
+    </section>
+</body>
+</html>

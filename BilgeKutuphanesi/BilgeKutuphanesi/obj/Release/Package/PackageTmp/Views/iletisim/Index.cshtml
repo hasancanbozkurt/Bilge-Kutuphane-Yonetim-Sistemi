@@ -1,0 +1,30 @@
+﻿@using BilgeKutuphanesi.Models.Entity
+@model List<TBLiletisim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<title>Ana Sayfadan Gelen İletişim Mesajları - Admin Paneli</title>
+<h2>Ana Sayfadan Gelen İletişim Mesajları</h2>
+<table class="table">
+        <thead>
+            <tr>
+                <th>Gönderenin Adı</th>
+                <th>E-Posta</th>
+                <th>Konu</th>
+                <th>Mesaj</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var k in Model)
+            {
+            <tr>
+                <td style="max-width: 30px; word-wrap: break-word;">@k.AD</td>
+                <td style="max-width: 100px; word-wrap: break-word;">@k.MAIL</td>
+                <td style="max-width: 50px; word-wrap: break-word;">@k.KONU</td>
+                <td style="max-width: 250px; word-wrap: break-word;">@k.MESAJ</td>
+                <td><a href="/iletisim/iletiSil/@k.ID" class="btn btn-danger">Sil</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,95 @@
+﻿@using BilgeKutuphanesi.Models.Entity
+@model List<TBLKitapTakip>
+@{
+    ViewBag.Title = "Kitaplarim";
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+<h4>Kitap Listem</h4>
+<body class="hold-transition sidebar-mini">
+    <div class="col-12 d-sm-none">
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <ul class="navbar-nav flex-column">
+                <strong>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/Index/">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/Index/">Gelen Mesajlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/Giden/">Giden Mesajlar</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/YeniMesaj/">Yeni Mesajlar</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/Kitaplarim/">Kitaplarım</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Vitrin/Index/">Kütüphane Ana Sayfası</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/LogOut/">Çıkış Yap</a>
+                </li>
+                </strong>
+            </ul>
+        </nav>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <center><div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="card-header p-2">
+    </div>
+    <div class="card-body">
+        <div class="tab-pane" id="timeline">
+            <div class="timeline timeline-inverse">
+                @foreach (var item in Model)
+
+                {
+                    <div class="time-label">
+                        <a class="btn btn-success">
+                            <span class="bg-success">
+                                @(((DateTime)item.ALISTARIHI).ToString("dd-MMM-yyyy"))
+                            </span>
+                        </a>
+                        -----
+                        <a class="btn btn-warning">
+                            <span class="bg-warning">
+                                @if (item.UYEGETIRTARIH != null)
+                                {
+                                    @(((DateTime)item.UYEGETIRTARIH).ToString("dd-MMM-yyyy"))
+                                }
+                                else
+                                {
+                                    <span style="color: red;">Henüz iade edilmedi</span>
+                                }
+                            </span>
+                        </a>
+                    </div>
+                    <div>
+                        <div class="timeline-item">
+                            <div class="timeline-body">
+                                <a class="btn btn-dark">
+                                    <span class="bg-dark">
+                                        Kitap Yazarı: @item.TBLKitap.TBLYazar.AD
+                                        @item.TBLKitap.TBLYazar.SOYAD
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div></center>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>

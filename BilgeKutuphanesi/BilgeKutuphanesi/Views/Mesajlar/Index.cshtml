@@ -1,0 +1,139 @@
+﻿@using BilgeKutuphanesi.Models.Entity
+@model List<TBLMesajlar>
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mesajlar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Gelen Mesajlar</h1>
+        </div>
+    </div>
+    <div class="col-12 d-sm-none">
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <ul class="navbar-nav flex-column">
+                <strong>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/Index/">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/Index/">Gelen Mesajlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/Giden/">Giden Mesajlar</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/YeniMesaj/">Yeni Mesajlar</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/Kitaplarim/">Kitaplarım</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Vitrin/Index/">Kütüphane Ana Sayfası</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/LogOut/">Çıkış Yap</a>
+                </li>
+                </strong>
+            </ul>
+        </nav>
+    </div>
+    <section class="content">
+        <div class="row">
+            @Html.Action("Partial1")
+            <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Gelen Kutusu</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive mailbox-messages">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th></th>
+                                        <th>Gönderen</th>
+                                        <th style="max-width: 1000px;">Konu</th>
+                                        <th>Mesajı</th>
+                                        <th>Mesaj Tarihi</th>
+                                        <th></th>
+                                    </tr>
+                                    @foreach (var x in Model)
+                                    {
+                                        <tr>
+                                            <td class="mailbox-star"><i class="fas fa-star text-warning"></i></td>
+                                            <td class="mailbox-name">@x.GONDEREN</td>
+                                            <td style="max-width: 200px;" class="mailbox-subject">
+                                                <b>@x.KONU</b>
+                                            </td>
+                                            <td class="mailbox-attachment">
+                                                <b>@x.ICERIK</b>
+                                            </td>
+                                            <td class="mailbox-date">@x.TARIH</td>
+                                            <td><a href="/Mesajlar/MesajSil/@x.ID" class="btn btn-danger">Sil</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="control-sidebar control-sidebar-dark"></aside>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <script>
+        $(function () {
+
+
+            $('.checkbox-toggle').click(function () {
+                var clicks = $(this).data('clicks')
+                if (clicks) {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                    $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+                } else {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                    $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+                }
+                $(this).data('clicks', !clicks)
+            })
+            $('.mailbox-star').click(function (e) {
+                e.preventDefault()
+                var $this = $(this).find('a > i')
+                var glyph = $this.hasClass('glyphicon')
+                var fa = $this.hasClass('fa')
+
+                if (glyph) {
+                    $this.toggleClass('glyphicon-star')
+                    $this.toggleClass('glyphicon-star-empty')
+                }
+                if (fa) {
+                    $this.toggleClass('fa-star')
+                    $this.toggleClass('fa-star-o')
+                }
+            })
+        })</script>
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>

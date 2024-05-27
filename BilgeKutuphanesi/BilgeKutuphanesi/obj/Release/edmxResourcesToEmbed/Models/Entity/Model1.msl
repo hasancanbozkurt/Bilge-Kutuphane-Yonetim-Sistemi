@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBKutuphaneModelStoreContainer" CdmEntityContainer="DBKutuphaneEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLCezalar">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLCezalar">
+        <MappingFragment StoreEntitySet="TBLCezalar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UYE" ColumnName="UYE" />
+          <ScalarProperty Name="KITAPTAKIP" ColumnName="KITAPTAKIP" />
+          <ScalarProperty Name="BASLANGIC" ColumnName="BASLANGIC" />
+          <ScalarProperty Name="BITIS" ColumnName="BITIS" />
+          <ScalarProperty Name="PARA" ColumnName="PARA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLKasa">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLKasa">
+        <MappingFragment StoreEntitySet="TBLKasa">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AY" ColumnName="AY" />
+          <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLKategori">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLKategori">
+        <MappingFragment StoreEntitySet="TBLKategori">
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AD" ColumnName="AD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLKitap">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLKitap">
+        <MappingFragment StoreEntitySet="TBLKitap">
+          <ScalarProperty Name="KITAPRESIM" ColumnName="KITAPRESIM" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AD" ColumnName="AD" />
+          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+          <ScalarProperty Name="YAZAR" ColumnName="YAZAR" />
+          <ScalarProperty Name="BASIMYIL" ColumnName="BASIMYIL" />
+          <ScalarProperty Name="YAYINEVI" ColumnName="YAYINEVI" />
+          <ScalarProperty Name="SAYFA" ColumnName="SAYFA" />
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLKitapTakip">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLKitapTakip">
+        <MappingFragment StoreEntitySet="TBLKitapTakip">
+          <ScalarProperty Name="UYEGETIRTARIH" ColumnName="UYEGETIRTARIH" />
+          <ScalarProperty Name="ISLEMDURUM" ColumnName="ISLEMDURUM" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="KITAP" ColumnName="KITAP" />
+          <ScalarProperty Name="UYE" ColumnName="UYE" />
+          <ScalarProperty Name="PERSONEL" ColumnName="PERSONEL" />
+          <ScalarProperty Name="ALISTARIHI" ColumnName="ALISTARIHI" />
+          <ScalarProperty Name="IADETARIHI" ColumnName="IADETARIHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLPersonel">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLPersonel">
+        <MappingFragment StoreEntitySet="TBLPersonel">
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PERSONEL" ColumnName="PERSONEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLUyeler">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLUyeler">
+        <MappingFragment StoreEntitySet="TBLUyeler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AD" ColumnName="AD" />
+          <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="KULLANICIADI" ColumnName="KULLANICIADI" />
+          <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+          <ScalarProperty Name="FOTOGRAF" ColumnName="FOTOGRAF" />
+          <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+          <ScalarProperty Name="OKUL" ColumnName="OKUL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLYazar">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLYazar">
+        <MappingFragment StoreEntitySet="TBLYazar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AD" ColumnName="AD" />
+          <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+          <ScalarProperty Name="DETAY" ColumnName="DETAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLHakkimizda">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLHakkimizda">
+        <MappingFragment StoreEntitySet="TBLHakkimizda">
+          <ScalarProperty Name="SLOGAN" ColumnName="SLOGAN" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLiletisim">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLiletisim">
+        <MappingFragment StoreEntitySet="TBLiletisim">
+          <ScalarProperty Name="MESAJ" ColumnName="MESAJ" />
+          <ScalarProperty Name="KONU" ColumnName="KONU" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="AD" ColumnName="AD" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="EnFazlaKitapYazar" FunctionName="DBKutuphaneModel.Store.EnFazlaKitapYazar" />
+    <EntitySetMapping Name="TBLMesajlar">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLMesajlar">
+        <MappingFragment StoreEntitySet="TBLMesajlar">
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+          <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+          <ScalarProperty Name="KONU" ColumnName="KONU" />
+          <ScalarProperty Name="ALICI" ColumnName="ALICI" />
+          <ScalarProperty Name="GONDEREN" ColumnName="GONDEREN" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLDuyurular">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLDuyurular">
+        <MappingFragment StoreEntitySet="TBLDuyurular">
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+          <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLAdmin">
+      <EntityTypeMapping TypeName="DBKutuphaneModel.TBLAdmin">
+        <MappingFragment StoreEntitySet="TBLAdmin">
+          <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Kullanici" ColumnName="Kullanici" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DBKutuphaneModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DBKutuphaneModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DBKutuphaneModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DBKutuphaneModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBKutuphaneModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DBKutuphaneModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBKutuphaneModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DBKutuphaneModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DBKutuphaneModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

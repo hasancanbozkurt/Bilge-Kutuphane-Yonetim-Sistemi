@@ -1,0 +1,33 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLDuyurular
+@{
+    ViewBag.Title = "YeniDuyuru";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<title>Yeni Duyuru Ekle - Admin Paneli</title>
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Duyuru Kategori</label>
+        <select name="KATEGORI" class="form-control" required="">
+            <option value="">Kategori Seçiniz*</option>
+            <option value="Diğer">Diğer</option>
+            <option value="Yeni Kitap">Yeni Kitap</option>
+            <option value="İletişim">İletişim</option>
+            <option value="Kitapları Geciktirmeyin">Kitapları Geciktirmeyin</option>
+        </select>
+        <br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Duyuru İçerik</label>
+        @Html.TextBoxFor(x => x.ICERIK, new { @class = "form-control", maxlength = "250" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Duyuru Tarih</label>
+        <input type="text" class="form-control" name="TARIH" value="@DateTime.Now.ToShortDateString()" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="Btn1">Duyuru Ekle</button>
+    </div>
+</form>
+
+

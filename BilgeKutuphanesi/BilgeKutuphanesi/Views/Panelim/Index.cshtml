@@ -1,0 +1,146 @@
+﻿@using BilgeKutuphanesi.Models.Entity
+@model List<TBLDuyurular>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Panelim | </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Profilim</h1>
+                </div>
+            </div>
+              <div class="col-12 d-sm-none">
+                   <nav class="navbar navbar-expand navbar-light bg-light">
+                       <ul class="navbar-nav flex-column">
+                           <strong>
+                           <li class="nav-item">
+                               <a class="nav-link" href="/Panelim/Index/">Ana Sayfa</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="/Mesajlar/Index/">Gelen Mesajlar</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="/Mesajlar/Giden/">Giden Mesajlar</a>
+                           </li>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="/Mesajlar/YeniMesaj/">Yeni Mesajlar</a>
+                           </li>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="/Panelim/Kitaplarim/">Kitaplarım</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="/Vitrin/Index/">Kütüphane Ana Sayfası</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="/Panelim/LogOut/">Çıkış Yap</a>
+                           </li>
+                           </strong>
+                       </ul>
+                   </nav>
+               </div>
+           </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="@ViewBag.d3" alt="Foto Eklemek İçin Ayarlara Git">
+                            </div>
+                            <h3 class="profile-username text-center">@ViewBag.d1 @ViewBag.d2</h3>
+                            <p class="text-muted text-center">Kütüphane Üyesi</p>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Okuduğum Kitap Sayısı:</b> <a class="float-right">@ViewBag.d8</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Gelen Mesaj Sayısı:</b> <a class="float-right">@ViewBag.d9</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Duyuru</b> <a class="float-right">@ViewBag.d10</a>
+                                </li>
+                            </ul>
+                            <a href="/Mesajlar/Index/" class="btn btn-primary btn-block"><b>Gelen Kutusu</b></a>
+                        </div>
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Hakkımda</h3>
+                        </div>
+                        <div class="card-body">
+                            <strong><i class="fas fa-book mr-1"></i> Okul</strong>
+                            <p class="text-muted">
+                                @ViewBag.d5
+                            </p>
+                            <hr>
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Telefon</strong>
+                            <p class="text-muted">@ViewBag.d6</p>
+
+                            <hr>
+                            <strong><i class="fas fa-pencil-alt mr-1"></i>Kullanıcı Adı</strong>
+                           
+                            <p class="text-muted">
+                                @ViewBag.d4
+                            </p>
+                            <hr>
+                            <strong><i class="far fa-file-alt mr-1"></i>E-Posta</strong>
+                            <p class="text-muted">@ViewBag.d7</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Duyurular</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ayarlar</a></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">                            
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    @{
+                                        var sortedModel = Model.OrderByDescending(x => x.TARIH).ToList();
+                                    }
+
+                                    @Html.Partial("Partial1", sortedModel)
+                                </div>
+                                <div class="tab-pane" id="settings">
+                                    @Html.Action("Partial2", "Panelim")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>

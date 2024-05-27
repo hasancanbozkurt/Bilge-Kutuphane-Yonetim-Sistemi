@@ -1,0 +1,26 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLHakkimizda
+@{
+    ViewBag.Title = "AnaSayfaGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<title>Ana Sayfa Bilgileri Düzenleme Alanı - Admin Paneli</title>
+<h2>Sectionlar</h2>
+@using (Html.BeginForm("AnaSayfaGuncelle", "AnaSayfa", FormMethod.Post))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>ID</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        <label>SLOGAN ALANI</label>
+        @Html.TextBoxFor(k => k.SLOGAN, new { @class = "form-control", maxlength = "200" })
+    </div>
+    <div class="form-group">
+        <label>HAKKIMIZDA ALANI</label>
+        @Html.TextBoxFor(k => k.ACIKLAMA, new { @class = "form-control", maxlength = "300" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

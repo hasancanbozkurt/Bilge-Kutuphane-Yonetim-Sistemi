@@ -1,0 +1,35 @@
+﻿@using BilgeKutuphanesi.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLKitapTakip>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<title>İadesi Alınan Kitap Listesi - Admin Paneli</title>
+<h2>İadesi Alınan Kitap Listesi</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Kitap Adı</th>
+        <th>Üye</th>
+        <th>Personel</th>
+        <th>Alış Tarihi</th>
+        <th>Üye İade Tarihi</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.TBLKitap.AD</td>
+            <td>@k.TBLUyeler.AD&nbsp @k.TBLUyeler.SOYAD</td>
+            <td>@k.TBLPersonel.PERSONEL</td>
+            <td>@Convert.ToDateTime(k.ALISTARIHI).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(k.UYEGETIRTARIH).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Odunc/Odunciade/@k.ID" class="btn btn-default" style="background-color:#f87cdf; color:white">Detaylar</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+

@@ -1,0 +1,4 @@
+﻿Derleme başladı...
+1>------ Derleme başladı: Proje: BilgeKutuphanesi, Yapılandırma: Debug Any CPU ------
+1>  BilgeKutuphanesi -> C:\Users\HCB\source\repos\BilgeKutuphanesi\BilgeKutuphanesi\bin\BilgeKutuphanesi.dll
+========== Oluşturma: 1 başarılı, 0 başarısız, 0 güncel, 0 atlandı ==========

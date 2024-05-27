@@ -1,0 +1,23 @@
+﻿@using BilgeKutuphanesi.Models.Entity
+@model List<TBLHakkimizda>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<title>Ana Sayfa Bilgileri Düzenleme Alanı - Admin Paneli</title>
+<h2>Sectionlar</h2>
+<table class="table table-bordered">
+    @foreach (var ktg in Model)
+    {
+    <tr>
+        <td style="max-width: 60px; word-wrap: break-word;"><strong>Slogan Alanı: </strong> @ktg.SLOGAN</td>
+        <td style="max-width: 20px; word-wrap: break-word;"><a href="/AnaSayfa/AnaSayfaGetir/@ktg.ID" class="btn btn-success">Güncelle</a></td>
+    </tr>
+    <tr>
+        <td style="max-width: 60px; word-wrap: break-word;"><strong>Hakkımızda Alanı: </strong> @ktg.ACIKLAMA</td>
+        <td style="max-width: 20px; word-wrap: break-word;"><a href="/AnaSayfa/AnaSayfaGetir/@ktg.ID" class="btn btn-success">Güncelle</a></td>
+    </tr>
+    }
+</table>
+

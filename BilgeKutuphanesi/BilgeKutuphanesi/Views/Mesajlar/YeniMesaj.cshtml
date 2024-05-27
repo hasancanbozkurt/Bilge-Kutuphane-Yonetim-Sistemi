@@ -1,0 +1,151 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLMesajlar
+
+@{
+    ViewBag.Title = "YeniMesaj";
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Yeni Mesaj Gönder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Yeni Mesaj Gönder</h1>
+        </div>
+    </div>
+    <div class="col-12 d-sm-none">
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <ul class="navbar-nav flex-column">
+                <strong>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/Index/">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/Index/">Gelen Mesajlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/Giden/">Giden Mesajlar</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Mesajlar/YeniMesaj/">Yeni Mesajlar</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/Kitaplarim/">Kitaplarım</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Vitrin/Index/">Kütüphane Ana Sayfası</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Panelim/LogOut/">Çıkış Yap</a>
+                </li>
+                </strong>
+            </ul>
+        </nav>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                @Html.Action("Partial1")
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Yeni Mesaj Oluştur</strong></h3>
+                        </div>
+                        @using (Html.BeginForm("YeniMesaj", "Mesajlar", FormMethod.Post))
+                        {
+                            <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                        <label>Alıcı</label>
+                                        <input class="form-control" name="ALICI" maxlength="50" placeholder="Kime:" required style="width: 300px;">
+                                        <p class="help-block text-danger"></p>
+                                        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                                        {
+                                            <div class="alert alert-danger" role="alert">
+                                                @ViewBag.ErrorMessage
+                                            </div>
+                                            <script>
+
+                                            setTimeout(function() {
+                                                window.location.href = '@Url.Action("YeniMesaj", "Mesajlar")';
+                                            }, 5000);
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                        <label>Konu</label>
+                                        <input class="form-control" name="KONU" maxlength="20" style="width: 300px;" placeholder="Konu:">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                        <label>Mesaj</label>
+                                        <textarea class="form-control" id="message" name="ICERIK" rows="5" placeholder="Mesaj" required="required" style="width: 900px;" maxlength="50" onkeyup="checkWordCount()" data-validation-required-message="Lütfen bir mesaj giriniz."></textarea>
+                                        <p class="help-block text-danger" id="wordCountMessage"></p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div id="success"></div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton" disabled>Gönder</button>
+                                </div>
+                                <script>
+                                    function checkWordCount() {
+                                        var message = document.getElementById("message").value;
+                                        var words = message.trim().split(/\s+/);
+                                        var wordCount = words.filter(function (word) {
+                                            return word.length > 0;
+                                        }).length;
+
+                                        var messageParagraph = document.getElementById("wordCountMessage");
+                                        var submitButton = document.getElementById("sendMessageButton");
+
+                                        if (wordCount > 100) {
+                                            messageParagraph.textContent = "Mesaj 100 kelimeden fazla olamaz.";
+                                            submitButton.disabled = true;
+                                        } else {
+                                            messageParagraph.textContent = "";
+                                            submitButton.disabled = false;
+                                        }
+                                    }
+                                </script>
+                            </form>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+        $(function () {
+            $('#compose-textarea').summernote()
+        })</script>
+
+    <script src="~/web/vendor/jquery/jquery.min.js"></script>
+    <script src="~/web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/web/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/web/js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+    <script src="~/web/js/freelancer.min.js"></script>
+</body>
+</html>

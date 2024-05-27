@@ -1,0 +1,40 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLPersonel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(x => x.PERSONEL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PERSONEL, "", new { @style = "color:forestgreen" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" type="submit" id="Btn1">Personel Ekle</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.getElementById('personelForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Formun normal yollardan gönderilmesini engeller
+
+            $.ajax({
+                url: 'Server-Endpoint-URL', // Sunucunuzun URL'sini buraya yazın
+                type: 'POST',
+                data: $(this).serialize(), // Form verilerini toplar
+                success: function (response) {
+                    alert('Personel başarıyla eklendi! Yönlendiriliyorsunuz...');
+                    setTimeout(function () {
+                        window.location.href = '/Personel/Index/'; // İstenilen sayfaya yönlendirme
+                    }, 2000); // 2 saniye sonra yönlendirme
+                },
+                error: function (xhr, status, error) {
+                    alert('Personel eklenirken bir hata oluştu: ' + error);
+                }
+            });
+        });
+    </script>
+</form>
+
+

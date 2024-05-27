@@ -1,0 +1,96 @@
+﻿@model BilgeKutuphanesi.Models.Entity.TBLKitap
+@{
+    ViewBag.Title = "KitapGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<title>Kitap Güncelle - Admin Paneli</title>
+<div class="container">
+    @if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+</div>
+@using (Html.BeginForm("KitapGuncelle", "Kitap", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>Kitap ID</label>
+            @Html.TextBoxFor(k => k.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Kitap Adı</label>
+            @Html.TextBoxFor(k => k.AD, new { @class = "form-control", maxlength = "50" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Kategori</label>
+            @Html.DropDownListFor(k => k.TBLKategori.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Yazarı</label>
+            @Html.DropDownListFor(k => k.TBLYazar.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Basım Yılı</label>
+            @Html.TextBoxFor(k => k.BASIMYIL, new { @class = "form-control", maxlength = "4" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Yayınevi</label>
+            @Html.TextBoxFor(k => k.YAYINEVI, new { @class = "form-control", maxlength = "50" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Sayfa Sayısı</label>
+            @Html.TextBoxFor(k => k.SAYFA, new { @class = "form-control", maxlength = "5" })
+        </div>
+        <div style="margin-top:15px">
+            <label>Yeni Kitap Resmini Yükle</label>
+            <input type="file" name="KitapResim" id="newImage" onchange="return validateFile()" />
+        </div>
+        <center>
+            <div style="margin-bottom:15px">
+                <label>Mevcut Kitap Görseli</label>
+                @if (!string.IsNullOrEmpty(Model.KITAPRESIM))
+                {
+                    <img src="@Url.Content(Model.KITAPRESIM)" alt="Mevcut Kitap Görseli" id="currentImage" style="max-width: 200px; max-height: 200px;" />
+                }
+            </div>
+        </center>
+        <button class="btn btn-warning">Kitap Bilgilerini Güncelle</button>
+        <input type="hidden" name="Durum" value="True" />
+    </div>
+}
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("previewImage");
+            preview.src = src;
+            preview.style.display = "block";
+            // Mevcut resmi gizle
+            var currentImage = document.getElementById("currentImage");
+            if (currentImage) {
+                currentImage.style.display = "none";
+            }
+        }
+    }
+</script>
+<script>
+    function validateFile() {
+        var fileInput = document.getElementById('newImage');
+        var filePath = fileInput.value;
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Lütfen bir JPG, JPEG veya PNG dosyası yükleyin.');
+            fileInput.value = '';
+            return false;
+        }
+        if (fileInput.files[0].size > 1242880) {
+            alert("Dosya boyutu 1 MB'dan küçük olmalıdır.");
+            fileInput.value = '';
+            return false;
+        }
+        return true;
+    }
+</script>
